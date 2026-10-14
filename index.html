@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Free Tanzania salary, PAYE, savings and financial calculators.">
+  <meta name="theme-color" content="#0f766e">
+  <title>HesabuTz — Free Financial Calculators for Tanzania</title>
+  <style>
+    :root{--ink:#142b3b;--muted:#607384;--green:#0f766e;--pale:#e8f6f3;--line:#e0e8ed;--bg:#f7fafb}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+    a{color:inherit}
+    .wrap{width:min(1080px,92%);margin:auto}
+    header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:5}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:15px 0}
+    .brand{font-size:1.35rem;font-weight:850;letter-spacing:-.5px;color:var(--green);text-decoration:none}
+    .nav small{color:var(--muted)}
+    .hero{padding:52px 0 35px;background:linear-gradient(135deg,#e8f6f3,#f4f8ff)}
+    .eyebrow{font-size:.78rem;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--green)}
+    h1{font-size:clamp(2rem,6vw,3.4rem);line-height:1.08;letter-spacing:-1.5px;margin:10px 0 14px;max-width:700px}
+    .hero p{color:var(--muted);max-width:640px;margin:0 0 22px}
+    .search{display:flex;gap:10px;max-width:680px;background:white;padding:7px;border:1px solid var(--line);border-radius:14px;box-shadow:0 8px 25px #142b3b0d}
+    .search input{flex:1;min-width:0;border:0;outline:0;padding:12px;font-size:1rem;background:transparent}
+    button,.btn{border:0;border-radius:10px;background:var(--green);color:white;font-weight:750;padding:12px 17px;cursor:pointer;text-decoration:none;display:inline-block}
+    button:hover,.btn:hover{filter:brightness(.94)}
+    main{padding:32px 0 48px}
+    .section-head{display:flex;justify-content:space-between;align-items:end;gap:10px;margin-bottom:17px}
+    h2{font-size:1.45rem;letter-spacing:-.4px;margin:0}
+    .section-head p{margin:4px 0 0;color:var(--muted);font-size:.93rem}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+    .card{background:white;border:1px solid var(--line);border-radius:16px;padding:19px;min-height:150px;display:flex;flex-direction:column;align-items:flex-start;gap:8px}
+    .ico{width:42px;height:42px;border-radius:12px;background:var(--pale);display:grid;place-items:center;font-size:1.25rem}
+    .card h3{font-size:1.02rem;margin:2px 0 0}
+    .card p{color:var(--muted);font-size:.9rem;margin:0;flex:1}
+    .card a{color:var(--green);font-weight:750;font-size:.9rem;text-decoration:none}
+    .card a:hover{text-decoration:underline}
+    .empty{display:none;background:#fff;border:1px dashed var(--line);padding:24px;border-radius:14px;color:var(--muted);text-align:center}
+    .note{margin-top:28px;padding:17px 19px;border-radius:14px;background:#fff;border:1px solid var(--line);color:var(--muted);font-size:.9rem}
+    footer{background:#102b39;color:#e8f0f3;padding:26px 0}
+    footer p{color:#c1d1d9;font-size:.88rem;margin:7px 0}
+    .footlinks{display:flex;gap:15px;flex-wrap:wrap;font-size:.88rem}
+    .footlinks a{color:#e8f0f3}
+    @media(max-width:700px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding:38px 0 28px}.card{padding:15px;min-height:170px}.nav small{display:none}}
+    @media(max-width:430px){.grid{grid-template-columns:1fr}.search{flex-direction:column}.search button{width:100%}.card{min-height:auto}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="./" aria-label="HesabuTz home">HesabuTz<span style="color:#142b3b">.</span></a>
+      <small>Simple tools. Smarter decisions.</small>
+    </div>
+  </header>
+  <section class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Free financial calculators</div>
+      <h1>Calculate smarter with HesabuTz.</h1>
+      <p>Explore simple tools for salary planning, savings, loans and everyday money decisions in Tanzania.</p>
+      <form class="search" id="searchForm" role="search">
+        <input id="searchInput" type="search" placeholder="Search calculators, e.g. net salary..." aria-label="Search calculators">
+        <button type="submit">Search</button>
+      </form>
+    </div>
+  </section>
+  <main class="wrap">
+    <div class="section-head">
+      <div><h2 id="listTitle">Explore calculators</h2><p id="listSub">Choose a tool to get started.</p></div>
+    </div>
+    <div class="grid" id="calculatorGrid">
+      <article class="card" data-terms="salary gross net take home payslip pay"><div class="ico">💼</div><h3>Salary Planner</h3><p>Estimate monthly and yearly salary figures.</p><a href="#salary" data-calc="salary">Open calculator →</a></article>
+      <article class="card" data-terms="paye income tax taxable tax tanzania"><div class="ico">🧾</div><h3>PAYE & Income Tax</h3><p>Explore taxable income and tax planning.</p><a href="#paye" data-calc="paye">Open calculator →</a></article>
+      <article class="card" data-terms="nssf pension contribution social security"><div class="ico">🏦</div><h3>NSSF Contribution</h3><p>Estimate a contribution using a rate you enter.</p><a href="#nssf" data-calc="nssf">Open calculator →</a></article>
+      <article class="card" data-terms="loan repayment borrowing interest finance"><div class="ico">📊</div><h3>Loan Repayment</h3><p>Estimate monthly payments on a fixed-rate loan.</p><a href="#loan" data-calc="loan">Open calculator →</a></article>
+      <article class="card" data-terms="savings goal saving deposit interest"><div class="ico">🎯</div><h3>Savings Goal</h3><p>Calculate how much to set aside each month.</p><a href="#savings" data-calc="savings">Open calculator →</a></article>
+      <article class="card" data-terms="salary increase raise increment percentage"><div class="ico">📈</div><h3>Salary Increase</h3><p>Compare your current salary with a proposed raise.</p><a href="#raise" data-calc="raise">Open calculator →</a></article>
+      <article class="card" data-terms="hourly daily yearly wage freelance rate"><div class="ico">⏱️</div><h3>Hourly Rate</h3><p>Convert pay between hourly, daily and monthly.</p><a href="#hourly" data-calc="hourly">Open calculator →</a></article>
+      <article class="card" data-terms="expenses budget monthly cost living"><div class="ico">🛒</div><h3>Monthly Budget</h3><p>See what remains after your expenses.</p><a href="#budget" data-calc="budget">Open calculator →</a></article>
+      <article class="card" data-terms="currency exchange usd tzs dollar shilling"><div class="ico">💱</div><h3>Currency Converter</h3><p>Convert currencies using a rate you provide.</p><a href="#currency" data-calc="currency">Open calculator →</a></article>
+    </div>
+    <div class="empty" id="emptyState">No calculators match that search. Try “salary”, “loan” or “savings”.</div>
+    <section id="toolPanel" class="note" style="display:none" aria-live="polite"></section>
+    <div class="note"><strong>Important:</strong> These tools provide estimates for planning. Tax, pension and currency rules or rates can change. Verify official rates and your personal circumstances before making financial decisions.</div>
+  </main>
+  <footer>
+    <div class="wrap">
+      <strong>HesabuTz</strong>
+      <p>Free, straightforward calculators for everyday financial planning.</p>
+      <div class="footlinks"><a href="#about" id="aboutLink">About</a><a href="mailto:hello@hesabutz.example">Contact</a><a href="#privacy" id="privacyLink">Privacy</a><a href="#disclaimer" id="disclaimerLink">Disclaimer</a></div>
+      <p>© <span id="year"></span> HesabuTz. All rights reserved.</p>
+    </div>
+  </footer>
+  <script>
+    const cards = [...document.querySelectorAll('.card')];
+    const searchInput = document.getElementById('searchInput');
+    const grid = document.getElementById('calculatorGrid');
+    const empty = document.getElementById('emptyState');
+    const panel = document.getElementById('toolPanel');
+    document.getElementById('year').textContent = new Date().getFullYear();
+    function filterCards(){
+      const q = searchInput.value.trim().toLowerCase();
+      let shown=0;
+      cards.forEach(card=>{
+        const match=(card.innerText+' '+card.dataset.terms).toLowerCase().includes(q);
+        card.style.display=match?'flex':'none';
+        if(match) shown++;
+      });
+      empty.style.display=shown?'none':'block';
+      document.getElementById('listTitle').textContent=q?'Search results':'Explore calculators';
+      document.getElementById('listSub').textContent=q?`${shown} calculator${shown===1?'':'s'} found.`:'Choose a tool to get started.';
+    }
+    searchInput.addEventListener('input',filterCards);
+    document.getElementById('searchForm').addEventListener('submit',e=>{e.preventDefault();filterCards();document.getElementById('listTitle').scrollIntoView({behavior:'smooth',block:'start'});});
+    const templates = {
+      salary:{title:'Salary Planner',fields:[['gross','Monthly gross salary (TZS)','number',0],['months','Months per year','number',12]],calc:v=>`Annual gross salary: ${money(v.gross*v.months)} TZS. Monthly gross salary: ${money(v.gross)} TZS. This does not calculate take-home pay or tax.`},
+      paye:{title:'PAYE & Income Tax',fields:[['income','Monthly taxable income (TZS)','number',0]],calc:v=>'Enter a verified current Tanzania PAYE schedule before using this tool for an estimate. This first version does not apply tax brackets.'},
+      nssf:{title:'NSSF Contribution',fields:[['salary','Monthly salary (TZS)','number',0],['rate','Contribution rate (%)','number',10]],calc:v=>`Estimated contribution at your entered rate: ${money(v.salary*v.rate/100)} TZS. Confirm the applicable rate and who pays each portion with official NSSF guidance.`},
+      loan:{title:'Loan Repayment',fields:[['principal','Loan amount (TZS)','number',0],['rate','Annual interest rate (%)','number',0],['months','Repayment period (months)','number',12]],calc:v=>{let r=v.rate/1200,n=v.months,p=v.principal;if(n<=0||p<0||v.rate<0)return'Enter a valid loan amount, non-negative rate and repayment period above zero.';let m=r===0?p/n:p*r/(1-Math.pow(1+r,-n));return`Estimated monthly payment: ${money(m)} TZS. Estimated total repayment: ${money(m*n)} TZS, excluding fees and other charges.`}},
+      savings:{title:'Savings Goal',fields:[['goal','Savings target (TZS)','number',0],['months','Months to save','number',1],['current','Current savings (TZS)','number',0]],calc:v=>v.months<=0?'Enter a period greater than zero.':`You need to save approximately ${money(Math.max(0,v.goal-v.current)/v.months)} TZS per month, assuming no interest.`},
+      raise:{title:'Salary Increase',fields:[['salary','Current monthly salary (TZS)','number',0],['rate','Increase (%)','number',0]],calc:v=>`New monthly salary: ${money(v.salary*(1+v.rate/100))} TZS. Increase: ${money(v.salary*v.rate/100)} TZS per month.`},
+      hourly:{title:'Hourly Rate',fields:[['monthly','Monthly income (TZS)','number',0],['hours','Work hours per week','number',40]],calc:v=>v.hours<=0?'Enter weekly hours greater than zero.':`Approximate hourly rate: ${money(v.monthly/(v.hours*52/12))} TZS, assuming ${v.hours} work hours per week.`},
+      budget:{title:'Monthly Budget',fields:[['income','Monthly income (TZS)','number',0],['expenses','Monthly expenses (TZS)','number',0]],calc:v=>`Estimated money remaining: ${money(v.income-v.expenses)} TZS.`},
+      currency:{title:'Currency Converter',fields:[['amount','Amount to convert','number',0],['rate','Rate: TZS per 1 unit of foreign currency','number',0]],calc:v=>`At your entered rate, ${money(v.amount)} foreign-currency units = ${money(v.amount*v.rate)} TZS. This rate is supplied by you and is not live.`}
+    };
+    function money(n){return Number(n).toLocaleString('en-US',{maximumFractionDigits:2,minimumFractionDigits:0});}
+    document.querySelectorAll('[data-calc]').forEach(link=>link.addEventListener('click',e=>{
+      e.preventDefault();const key=link.dataset.calc,t=templates[key];if(!t)return;
+      panel.style.display='block';
+      panel.innerHTML=`<h2>${t.title}</h2><p>Enter your values below and calculate an estimate.</p><form id="toolForm">${t.fields.map(f=>`<label style="display:block;margin:12px 0;font-weight:650" for="f-${f[0]}">${f[1]}<input id="f-${f[0]}" name="${f[0]}" type="number" min="0" step="any" value="${f[3]}" required style="display:block;width:100%;padding:12px;margin-top:5px;border:1px solid #cbd7df;border-radius:9px;font:inherit"></label>`).join('')}<button type="submit">Calculate</button> <button type="button" id="closeTool" style="background:#607384">Close</button></form><p id="toolResult" style="font-weight:750;color:#0f766e"></p><p style="font-size:.85rem">Estimate only. Check applicable rules, rates and fees.</p>`;
+      panel.scrollIntoView({behavior:'smooth',block:'start'});
+      document.getElementById('closeTool').addEventListener('click',()=>{panel.style.display='none';panel.innerHTML='';});
+      document.getElementById('toolForm').addEventListener('submit',ev=>{ev.preventDefault();const data={};t.fields.forEach(f=>{data[f[0]]=Number(new FormData(ev.target).get(f[0]));});document.getElementById('toolResult').textContent=t.calc(data);});
+    }));
+    document.getElementById('aboutLink').addEventListener('click',()=>alert('HesabuTz is a developing project offering simple financial planning calculators.'));
+    document.getElementById('privacyLink').addEventListener('click',()=>alert('This prototype does not send calculator entries to a server. Add a full privacy policy before adding analytics or advertising.'));
+    document.getElementById('disclaimerLink').addEventListener('click',()=>alert('Results are estimates for planning and are not tax, legal, investment or accounting advice.'));
+  </script>
+</body>
+</html>
